@@ -50,18 +50,18 @@ const Contact = () => {
             {/* Social Links */}
             <div className="space-y-4">
               <a 
-                href="https://github.com/aarav-mehta" 
+                href="https://github.com/gt-ayush" 
                 className="flex items-center space-x-4 p-4 bg-gray-800 rounded-lg border border-gray-700 hover:border-green-500 transition-all duration-300 group"
               >
                 <Github className="w-6 h-6 text-green-400 group-hover:scale-110 transition-transform" />
                 <div>
                   <div className="text-white font-mono">GitHub</div>
-                  <div className="text-gray-400 text-sm">github.com/aarav-mehta</div>
+                  <div className="text-gray-400 text-sm">github.com/gt-ayush</div>
                 </div>
               </a>
 
               <a 
-                href="https://linkedin.com/in/aarav-mehta" 
+                href="https://www.linkedin.com/in/ayush-root/" 
                 className="flex items-center space-x-4 p-4 bg-gray-800 rounded-lg border border-gray-700 hover:border-blue-500 transition-all duration-300 group"
               >
                 <Linkedin className="w-6 h-6 text-blue-400 group-hover:scale-110 transition-transform" />
@@ -72,13 +72,24 @@ const Contact = () => {
               </a>
 
               <a 
-                href="mailto:aarav@example.com" 
+                href="mailto:guptaayush12347@gmail.com" 
                 className="flex items-center space-x-4 p-4 bg-gray-800 rounded-lg border border-gray-700 hover:border-yellow-500 transition-all duration-300 group"
               >
                 <Mail className="w-6 h-6 text-yellow-400 group-hover:scale-110 transition-transform" />
                 <div>
-                  <div className="text-white font-mono">Email</div>
-                  <div className="text-gray-400 text-sm">aarav@example.com</div>
+                  <div className="text-white font-mono">Primary Email</div>
+                  <div className="text-gray-400 text-sm">guptaayush12347@gmail.com</div>
+                </div>
+              </a>
+
+              <a 
+                href="mailto:Gt-ayush@outlook.com" 
+                className="flex items-center space-x-4 p-4 bg-gray-800 rounded-lg border border-gray-700 hover:border-yellow-500 transition-all duration-300 group"
+              >
+                <Mail className="w-6 h-6 text-yellow-400 group-hover:scale-110 transition-transform" />
+                <div>
+                  <div className="text-white font-mono">Secondary Email</div>
+                  <div className="text-gray-400 text-sm">Gt-ayush@outlook.com</div>
                 </div>
               </a>
             </div>
