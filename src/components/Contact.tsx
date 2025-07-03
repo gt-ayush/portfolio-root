@@ -102,7 +102,7 @@ const Contact = () => {
                   <span>Status: Available for opportunities</span>
                 </div>
                 <div className="text-xs text-gray-400 space-y-1">
-                  <div>• Open to remote work</div>
+                  <div>• Open to work</div>
                   <div>• Interested in ethical hacking roles</div>
                   <div>• Available for startup collaborations</div>
                   <div>• Open source contributions welcome</div>

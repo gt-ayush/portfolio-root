@@ -7,14 +7,14 @@ const Skills = () => {
     advanced: [
       { name: 'Linux Systems', level: 95, category: 'OS' },
       { name: 'Bash Scripting', level: 90, category: 'Shell' },
-      { name: 'Python', level: 88, category: 'Language' },
+      { name: 'Python', level: 60, category: 'Language' },
       { name: 'OS Development', level: 85, category: 'Systems' }
     ],
     intermediate: [
-      { name: 'Java', level: 75, category: 'Language' },
+      { name: 'Java', level: 40, category: 'Language' },
       { name: 'SQL Database', level: 80, category: 'Database' },
       { name: 'DNS Systems', level: 78, category: 'Network' },
-      { name: 'Ethical Hacking', level: 82, category: 'Security' }
+      { name: 'Ethical Hacking', level: 15, category: 'Security' }
     ],
     learning: [
       { name: 'C/C++', level: 60, category: 'Language' },
@@ -85,7 +85,7 @@ const Skills = () => {
         <div className="mt-16 max-w-4xl mx-auto">
           <div className="bg-black rounded-lg border-2 border-green-500/30 p-6">
             <div className="text-green-400 font-mono text-sm mb-4">
-              <span className="text-blue-400">aarav@system</span>
+              <span className="text-blue-400">ayush@system</span>
               <span className="text-white">:</span>
               <span className="text-yellow-400">~/skills</span>
               <span className="text-white">$ </span>
