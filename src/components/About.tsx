@@ -47,7 +47,7 @@ const About = () => {
             <div className="bg-gray-800 rounded-lg p-6 border border-green-500/20">
               <div className="bg-black rounded p-4 font-mono text-green-400 text-sm">
                 <div className="flex items-center mb-2">
-                  <span className="text-blue-400">aarav@village</span>
+                  <span className="text-blue-400">ayush@village</span>
                   <span className="text-white">:</span>
                   <span className="text-yellow-400">~</span>
                   <span className="text-white">$ </span>

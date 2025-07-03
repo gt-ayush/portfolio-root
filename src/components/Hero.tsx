@@ -44,7 +44,7 @@ const Hero = () => {
         <div className="mb-8">
           <Terminal className="w-16 h-16 mx-auto mb-4 text-green-400" />
           <h1 className="text-6xl md:text-8xl font-bold text-white mb-4 font-mono tracking-tight">
-            Aarav Mehta
+            Ayush Kumar Gupta
           </h1>
           <div className="text-2xl md:text-3xl text-green-400 font-mono mb-6 h-8">
             {text}

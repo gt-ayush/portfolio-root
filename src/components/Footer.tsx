@@ -12,7 +12,7 @@ const Footer = () => {
             <div className="text-green-400 font-mono text-sm">
               <div className="flex items-center justify-center mb-2">
                 <Terminal className="w-4 h-4 mr-2" />
-                <span>aarav@portfolio:~$ exit</span>
+                <span>ayush@portfolio:~$ exit</span>
               </div>
               <div className="text-xs text-gray-400">
                 Session terminated. Thanks for visiting!
@@ -22,7 +22,7 @@ const Footer = () => {
 
           {/* Copyright */}
           <div className="text-gray-400 font-mono text-sm mb-4">
-            © 2025 Aarav Mehta — Made in Terminal
+            © 2025 Ayush Kumar Gupta — Made in Terminal
           </div>
 
           {/* Quote */}
