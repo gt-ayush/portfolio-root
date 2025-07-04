@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 
 const Hero = () => {
   const [text, setText] = useState('');
-  const fullText = 'Linux-first. Terminal-native. Self-Taught Hacker.';
+  const fullText = 'Self-Taught Systems Engineer. Linux Specialist. Problem Solver.';
   
   useEffect(() => {
     let i = 0;
@@ -16,7 +16,7 @@ const Hero = () => {
       } else {
         clearInterval(timer);
       }
-    }, 100);
+    }, 80);
     return () => clearInterval(timer);
   }, []);
 
@@ -46,12 +46,13 @@ const Hero = () => {
           <h1 className="text-6xl md:text-8xl font-bold text-white mb-4 font-mono tracking-tight">
             Ayush Kumar Gupta
           </h1>
-          <div className="text-2xl md:text-3xl text-green-400 font-mono mb-6 h-8">
-            {text}
-            <span className="animate-pulse">|</span>
+          <div className="text-2xl md:text-3xl text-green-400 font-mono mb-6 h-16 flex items-center justify-center">
+            <span>{text}</span>
+            <span className="animate-pulse ml-1">|</span>
           </div>
           <p className="text-xl md:text-2xl text-gray-300 font-light max-w-4xl mx-auto leading-relaxed">
-            From a disconnected village to building an OS without guidance.
+            From village constraints to building operating systems—proving that passion and persistence 
+            can overcome any limitation.
           </p>
         </div>
 
@@ -61,7 +62,7 @@ const Hero = () => {
             className="bg-green-500 hover:bg-green-600 text-black font-bold px-8 py-3 text-lg border-2 border-green-400 transition-all duration-300 hover:shadow-lg hover:shadow-green-500/25"
           >
             <ExternalLink className="w-5 h-5 mr-2" />
-            View Projects
+            Explore My Work
           </Button>
           <Button 
             variant="outline"
@@ -74,7 +75,7 @@ const Hero = () => {
 
         <div className="mt-12 text-green-400 font-mono animate-bounce">
           <div className="text-2xl">↓</div>
-          <div className="text-sm">scroll to explore</div>
+          <div className="text-sm">discover my journey</div>
         </div>
       </div>
     </section>

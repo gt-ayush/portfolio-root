@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Progress } from '@/components/ui/progress';
 
@@ -14,7 +13,6 @@ const Skills = () => {
       { name: 'Network Security', level: 65, category: 'Security' },
       { name: 'Linux (Terminal Tools)', level: 60, category: 'OS' },
       { name: 'Python', level: 60, category: 'Language' },
-      { name: 'C/C++', level: 60, category: 'Language' },
       { name: 'DNS Management', level: 60, category: 'Network' },
       { name: 'DevOps Tools', level: 55, category: 'Infrastructure' },
       { name: 'Java', level: 40, category: 'Language' }
