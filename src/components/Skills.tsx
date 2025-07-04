@@ -5,22 +5,23 @@ import { Progress } from '@/components/ui/progress';
 const Skills = () => {
   const skills = {
     advanced: [
-      { name: 'Linux Systems', level: 95, category: 'OS' },
-      { name: 'Bash Scripting', level: 90, category: 'Shell' },
+      { name: 'Linux (Terminal Tools)', level: 60, category: 'OS' },
+      { name: 'Shell Scripting', level: 90, category: 'Shell' },
       { name: 'Python', level: 60, category: 'Language' },
       { name: 'OS Development', level: 85, category: 'Systems' }
     ],
     intermediate: [
+      { name: 'Linux System Administration', level: 70, category: 'Systems' },
+      { name: 'DNS Management', level: 60, category: 'Network' },
+      { name: 'Cyber Security', level: 15, category: 'Security' },
+      { name: 'Network Security', level: 65, category: 'Security' },
       { name: 'Java', level: 40, category: 'Language' },
       { name: 'SQL Database', level: 80, category: 'Database' },
-      { name: 'DNS Systems', level: 78, category: 'Network' },
-      { name: 'Ethical Hacking', level: 15, category: 'Security' }
-    ],
-    learning: [
       { name: 'C/C++', level: 60, category: 'Language' },
-      { name: 'DevOps Tools', level: 55, category: 'Infrastructure' },
-      { name: 'Web Security', level: 65, category: 'Security' },
-      { name: 'Low-level Networking', level: 58, category: 'Network' }
+      { name: 'DevOps Tools', level: 55, category: 'Infrastructure' }
+    ],
+    basic: [
+      { name: 'WordPress', level: 30, category: 'CMS' }
     ]
   };
 
@@ -70,12 +71,12 @@ const Skills = () => {
             ))}
           </div>
 
-          {/* Learning Skills */}
+          {/* Basic Skills */}
           <div className="bg-gray-900 rounded-lg p-6 border-2 border-yellow-500/30">
             <h3 className="text-2xl font-bold text-yellow-400 mb-6 font-mono flex items-center">
-              <span className="mr-3">●</span> Learning
+              <span className="mr-3">●</span> Basic
             </h3>
-            {skills.learning.map((skill, index) => (
+            {skills.basic.map((skill, index) => (
               <SkillBar key={skill.name} skill={skill} index={index} />
             ))}
           </div>
