@@ -5,23 +5,23 @@ import { Progress } from '@/components/ui/progress';
 const Skills = () => {
   const skills = {
     advanced: [
-      { name: 'Linux (Terminal Tools)', level: 60, category: 'OS' },
       { name: 'Shell Scripting', level: 90, category: 'Shell' },
-      { name: 'Python', level: 60, category: 'Language' },
-      { name: 'OS Development', level: 85, category: 'Systems' }
+      { name: 'OS Development', level: 85, category: 'Systems' },
+      { name: 'SQL Database', level: 80, category: 'Database' },
+      { name: 'Linux System Administration', level: 70, category: 'Systems' }
     ],
     intermediate: [
-      { name: 'Linux System Administration', level: 70, category: 'Systems' },
-      { name: 'DNS Management', level: 60, category: 'Network' },
-      { name: 'Cyber Security', level: 15, category: 'Security' },
       { name: 'Network Security', level: 65, category: 'Security' },
-      { name: 'Java', level: 40, category: 'Language' },
-      { name: 'SQL Database', level: 80, category: 'Database' },
+      { name: 'Linux (Terminal Tools)', level: 60, category: 'OS' },
+      { name: 'Python', level: 60, category: 'Language' },
       { name: 'C/C++', level: 60, category: 'Language' },
-      { name: 'DevOps Tools', level: 55, category: 'Infrastructure' }
+      { name: 'DNS Management', level: 60, category: 'Network' },
+      { name: 'DevOps Tools', level: 55, category: 'Infrastructure' },
+      { name: 'Java', level: 40, category: 'Language' }
     ],
     basic: [
-      { name: 'WordPress', level: 30, category: 'CMS' }
+      { name: 'WordPress', level: 30, category: 'CMS' },
+      { name: 'Cyber Security', level: 15, category: 'Security' }
     ]
   };
 
