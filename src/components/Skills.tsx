@@ -1,119 +1,136 @@
 import React from 'react';
-import { Progress } from '@/components/ui/progress';
+import { Code2, Cpu, ShieldCheck } from 'lucide-react';
+
+const tree = [
+  {
+    branch: 'SYSTEMS',
+    icon: Cpu,
+    color: 'accent' as const,
+    nodes: [
+      { name: 'Arch Linux', level: 'EXPERT' },
+      { name: 'Kernel Config', level: 'EXPERT' },
+      { name: 'Debootstrap / Live-OS', level: 'EXPERT' },
+      { name: 'UEFI / BIOS Boot', level: 'ADV' },
+      { name: 'systemd', level: 'ADV' },
+      { name: 'Shell Scripting', level: 'EXPERT' },
+    ],
+  },
+  {
+    branch: 'SECURITY',
+    icon: ShieldCheck,
+    color: 'primary' as const,
+    nodes: [
+      { name: 'PQC (Kyber / Dilithium)', level: 'ADV' },
+      { name: 'DNSSEC', level: 'ADV' },
+      { name: 'Nmap / Recon', level: 'ADV' },
+      { name: 'TLS / Crypto Protocols', level: 'INT' },
+      { name: 'Network Security', level: 'INT' },
+      { name: 'Penetration Testing', level: 'INT' },
+    ],
+  },
+  {
+    branch: 'CODE',
+    icon: Code2,
+    color: 'accent' as const,
+    nodes: [
+      { name: 'Python', level: 'ADV' },
+      { name: 'C', level: 'ADV' },
+      { name: 'Go', level: 'INT' },
+      { name: 'Bash / Zsh', level: 'EXPERT' },
+      { name: 'SQL', level: 'ADV' },
+      { name: 'Java', level: 'INT' },
+    ],
+  },
+];
+
+const levelMap: Record<string, { w: string; tone: string }> = {
+  EXPERT: { w: 'w-full', tone: 'bg-accent' },
+  ADV: { w: 'w-4/5', tone: 'bg-primary' },
+  INT: { w: 'w-3/5', tone: 'bg-muted-foreground' },
+};
 
 const Skills = () => {
-  const skills = {
-    advanced: [
-      { name: 'Shell Scripting', level: 90, category: 'Shell' },
-      { name: 'OS Development', level: 85, category: 'Systems' },
-      { name: 'SQL Database', level: 80, category: 'Database' },
-      { name: 'Linux System Administration', level: 70, category: 'Systems' }
-    ],
-    intermediate: [
-      { name: 'Network Security', level: 65, category: 'Security' },
-      { name: 'Linux (Terminal Tools)', level: 60, category: 'OS' },
-      { name: 'Python', level: 60, category: 'Language' },
-      { name: 'DNS Management', level: 60, category: 'Network' },
-      { name: 'DevOps Tools', level: 55, category: 'Infrastructure' },
-      { name: 'Java', level: 40, category: 'Language' }
-    ],
-    basic: [
-      { name: 'WordPress', level: 30, category: 'CMS' },
-      { name: 'Cyber Security', level: 15, category: 'Security' }
-    ]
-  };
-
-  const SkillBar = ({ skill, index }: { skill: any; index: number }) => (
-    <div className="mb-6" style={{ animationDelay: `${index * 0.1}s` }}>
-      <div className="flex justify-between items-center mb-2">
-        <div className="flex items-center space-x-3">
-          <span className="text-white font-mono text-lg">{skill.name}</span>
-          <span className="text-green-400 text-xs bg-green-400/10 px-2 py-1 rounded font-mono">
-            {skill.category}
-          </span>
-        </div>
-        <span className="text-green-400 font-mono text-sm">{skill.level}%</span>
-      </div>
-      <Progress 
-        value={skill.level} 
-        className="h-2 bg-gray-800 border border-gray-700"
-      />
-    </div>
-  );
-
   return (
-    <section id="skills" className="py-20 bg-black relative">
+    <section id="skills" className="py-24 relative">
       <div className="container mx-auto px-6">
-        <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 text-white font-mono">
-          <span className="text-green-400">$</span> cat skills.txt
-        </h2>
+        <header className="mb-12 max-w-3xl">
+          <div className="text-accent font-mono text-sm mb-2">// 03 — TECH_STACK</div>
+          <h2 className="font-display text-4xl md:text-6xl font-bold text-foreground">
+            SKILL <span className="text-accent text-glow-green">TREE</span>
+          </h2>
+          <p className="text-muted-foreground mt-4 font-mono text-sm">
+            $ tree ~/competencies/ &nbsp;<span className="text-accent">— 3 branches, 18 nodes</span>
+          </p>
+        </header>
 
-        <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-12">
-          {/* Advanced Skills */}
-          <div className="bg-gray-900 rounded-lg p-6 border-2 border-green-500/30">
-            <h3 className="text-2xl font-bold text-green-400 mb-6 font-mono flex items-center">
-              <span className="mr-3">●</span> Advanced
-            </h3>
-            {skills.advanced.map((skill, index) => (
-              <SkillBar key={skill.name} skill={skill} index={index} />
-            ))}
-          </div>
+        <div className="grid md:grid-cols-3 gap-5">
+          {tree.map((b) => {
+            const Icon = b.icon;
+            const accent = b.color === 'accent';
+            return (
+              <div key={b.branch} className={`panel ${accent ? 'panel-glow-green' : 'panel-glow-blue'} p-6`}>
+                <div className="flex items-center gap-3 pb-4 mb-4 border-b border-border">
+                  <div className={`w-10 h-10 border-2 ${accent ? 'border-accent text-accent' : 'border-primary text-primary'} flex items-center justify-center`}>
+                    <Icon className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <div className="font-mono text-[10px] text-muted-foreground">BRANCH</div>
+                    <div className={`font-display text-xl ${accent ? 'text-accent' : 'text-primary'}`}>
+                      {b.branch}
+                    </div>
+                  </div>
+                </div>
 
-          {/* Intermediate Skills */}
-          <div className="bg-gray-900 rounded-lg p-6 border-2 border-blue-500/30">
-            <h3 className="text-2xl font-bold text-blue-400 mb-6 font-mono flex items-center">
-              <span className="mr-3">●</span> Intermediate
-            </h3>
-            {skills.intermediate.map((skill, index) => (
-              <SkillBar key={skill.name} skill={skill} index={index} />
-            ))}
-          </div>
-
-          {/* Basic Skills */}
-          <div className="bg-gray-900 rounded-lg p-6 border-2 border-yellow-500/30">
-            <h3 className="text-2xl font-bold text-yellow-400 mb-6 font-mono flex items-center">
-              <span className="mr-3">●</span> Basic
-            </h3>
-            {skills.basic.map((skill, index) => (
-              <SkillBar key={skill.name} skill={skill} index={index} />
-            ))}
-          </div>
+                <ul className="space-y-3 font-mono text-sm">
+                  {b.nodes.map((n, i) => {
+                    const meta = levelMap[n.level];
+                    return (
+                      <li key={n.name}>
+                        <div className="flex items-center justify-between mb-1.5">
+                          <span className="text-foreground flex items-center gap-2">
+                            <span className="text-muted-foreground text-xs">
+                              {i === b.nodes.length - 1 ? '└─' : '├─'}
+                            </span>
+                            {n.name}
+                          </span>
+                          <span className="text-[10px] text-muted-foreground">{n.level}</span>
+                        </div>
+                        <div className="ml-5 h-1 bg-background border border-border">
+                          <div className={`h-full ${meta.tone} ${meta.w}`} />
+                        </div>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            );
+          })}
         </div>
 
-        {/* Terminal Stats */}
-        <div className="mt-16 max-w-4xl mx-auto">
-          <div className="bg-black rounded-lg border-2 border-green-500/30 p-6">
-            <div className="text-green-400 font-mono text-sm mb-4">
-              <span className="text-blue-400">ayush@system</span>
-              <span className="text-white">:</span>
-              <span className="text-yellow-400">~/skills</span>
-              <span className="text-white">$ </span>
-              <span>neofetch --skills</span>
-            </div>
-            
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-              <div>
-                <div className="text-3xl font-bold text-green-400 font-mono">30+</div>
-                <div className="text-gray-400 text-sm">Linux Distros Tested</div>
-              </div>
-              <div>
-                <div className="text-3xl font-bold text-blue-400 font-mono">99</div>
-                <div className="text-gray-400 text-sm">ICSE Comp Score</div>
-              </div>
-              <div>
-                <div className="text-3xl font-bold text-yellow-400 font-mono">6</div>
-                <div className="text-gray-400 text-sm">Days to Learn Python</div>
-              </div>
-              <div>
-                <div className="text-3xl font-bold text-red-400 font-mono">∞</div>
-                <div className="text-gray-400 text-sm">Hours Debugging</div>
-              </div>
-            </div>
+        {/* Diagnostic readout */}
+        <div className="mt-10 panel p-5 max-w-4xl mx-auto">
+          <div className="font-mono text-xs text-muted-foreground mb-3 border-b border-border pb-2">
+            ayush@system:~/skills$ neofetch --skills
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+            <Stat n="30+" label="LINUX_DISTROS" />
+            <Stat n="99" label="ICSE_SCORE" tone="primary" />
+            <Stat n="12h" label="C_MASTERY" />
+            <Stat n="∞" label="TERMINAL_HOURS" tone="primary" />
           </div>
         </div>
       </div>
     </section>
   );
 };
+
+const Stat = ({ n, label, tone = 'accent' }: { n: string; label: string; tone?: 'accent' | 'primary' }) => (
+  <div className="border border-border bg-background p-3">
+    <div className={`font-display text-3xl ${tone === 'accent' ? 'text-accent text-glow-green' : 'text-primary text-glow-blue'}`}>
+      {n}
+    </div>
+    <div className="text-muted-foreground text-[10px] font-mono mt-1">{label}</div>
+  </div>
+);
 
 export default Skills;

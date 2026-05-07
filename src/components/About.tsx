@@ -1,83 +1,114 @@
-
 import React from 'react';
-import { Code, Monitor, Server, Shield } from 'lucide-react';
+import { AlertTriangle, GitBranch, Rocket, Zap } from 'lucide-react';
+
+const timeline = [
+  {
+    year: '4TH GRADE',
+    title: 'BRICKED FIRST OS',
+    body: 'Tried to flash a Linux distro with Rufus. Wrote to the wrong device. Killed the system. Did not stop.',
+    icon: AlertTriangle,
+    color: 'text-destructive',
+  },
+  {
+    year: 'CLASS 7',
+    title: 'DOWNLOADED 30+ ISOS',
+    body: 'On painfully slow village internet. No mentor, no Stack Overflow. Every kernel panic was a lesson.',
+    icon: GitBranch,
+    color: 'text-primary',
+  },
+  {
+    year: '12 HOURS',
+    title: 'MASTERED C',
+    body: 'Pointers, memory, structs — drilled in a single sitting. Learning agility as a survival trait.',
+    icon: Zap,
+    color: 'text-accent',
+  },
+  {
+    year: 'NOW',
+    title: 'BUILDING SYSTEMS',
+    body: 'Custom Linux OS. PQC scanners. DNS resolvers. Shipping high-execution builds from the BIOS up.',
+    icon: Rocket,
+    color: 'text-accent',
+  },
+];
 
 const About = () => {
   return (
-    <section id="about" className="py-20 bg-gray-900 relative">
-      <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-transparent"></div>
-      
-      <div className="container mx-auto px-6 relative z-10">
-        <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 text-white font-mono">
-          <span className="text-green-400">$</span> whoami
-        </h2>
+    <section id="about" className="py-24 relative">
+      <div className="container mx-auto px-6">
+        <header className="mb-12 max-w-3xl">
+          <div className="text-accent font-mono text-sm mb-2">// 02 — THE_JOURNEY</div>
+          <h2 className="font-display text-4xl md:text-6xl font-bold text-foreground">
+            FROM BRICKED OS<br />
+            <span className="text-primary text-glow-blue">TO PRODUCTION KERNEL</span>
+          </h2>
+          <p className="text-muted-foreground mt-4 font-mono text-sm md:text-base leading-relaxed">
+            A village kid with no broadband, no mentors, no privilege. Just a terminal,
+            curiosity, and a refusal to give up after every crash. This is the log of how
+            <span className="text-foreground"> learning agility</span> beats access.
+          </p>
+        </header>
 
-        <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
-              <div className="flex items-center space-x-4 text-green-400 mb-6">
-                <Code className="w-8 h-8" />
-                <Monitor className="w-8 h-8" />
-                <Server className="w-8 h-8" />
-                <Shield className="w-8 h-8" />
+        <div className="grid lg:grid-cols-12 gap-6">
+          {/* Timeline */}
+          <ol className="lg:col-span-8 space-y-4">
+            {timeline.map((t, i) => (
+              <li key={t.title} className="panel p-5 md:p-6 flex gap-5 hover:panel-glow-green transition-all">
+                <div className="hidden sm:flex flex-col items-center">
+                  <div className={`w-10 h-10 border-2 border-current ${t.color} flex items-center justify-center`}>
+                    <t.icon className="w-5 h-5" />
+                  </div>
+                  {i !== timeline.length - 1 && (
+                    <div className="flex-1 w-px bg-border mt-2 min-h-[24px]" />
+                  )}
+                </div>
+                <div className="flex-1">
+                  <div className="flex items-baseline justify-between flex-wrap gap-2">
+                    <h3 className="font-display text-xl md:text-2xl text-foreground">{t.title}</h3>
+                    <span className={`font-mono text-xs ${t.color}`}>[ {t.year} ]</span>
+                  </div>
+                  <p className="text-muted-foreground font-mono text-sm mt-2 leading-relaxed">{t.body}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+
+          {/* Side terminal */}
+          <aside className="lg:col-span-4 space-y-4">
+            <div className="panel p-5">
+              <div className="font-mono text-xs text-muted-foreground border-b border-border pb-2 mb-3">
+                ./identity --verbose
               </div>
-              
-              <p className="text-lg text-gray-300 leading-relaxed">
-                From a remote village where technology was scarce, I discovered my passion for systems programming 
-                in Class 6. While peers played games, I was mastering <span className="text-green-400 font-mono">Unity</span> and 
-                <span className="text-green-400 font-mono"> Godot</span>, building worlds from code.
-              </p>
-
-              <p className="text-lg text-gray-300 leading-relaxed">
-                Linux became my playground in Class 7. With no broadband, no mentors, and definitely no Stack Overflow, 
-                I downloaded <span className="text-green-400 font-mono">30+ distribution ISOs</span> over painfully slow village internet. 
-                Every kernel panic taught me patience. Every successful boot was a victory.
-              </p>
-
-              <p className="text-lg text-gray-300 leading-relaxed">
-                I don't just use technology—I build it. From crafting a persistent Linux OS that boots from any device 
-                to engineering DNS resolvers and diving deep into <span className="text-blue-400 font-mono">cryptographic protocols</span>. 
-                My approach: understand the fundamentals, then innovate.
-              </p>
-
-              <p className="text-lg text-gray-300 leading-relaxed">
-                Academic excellence followed naturally: <span className="text-green-400 font-mono">99/100</span> in ICSE Computer Applications. 
-                But my real education happened in the terminal—mastering <span className="text-blue-400 font-mono">bash</span>, 
-                <span className="text-blue-400 font-mono"> SQL</span>, and <span className="text-blue-400 font-mono">Python</span> through 
-                relentless experimentation and a hunger to understand how things really work.
-              </p>
+              <dl className="font-mono text-sm space-y-3">
+                <Row k="alias" v="gt-ayush" />
+                <Row k="role" v="systems_engineer" />
+                <Row k="origin" v="rural_india" />
+                <Row k="trait" v="learning_agility" highlight />
+                <Row k="ICSE_score" v="99 / 100" />
+                <Row k="primary_shell" v="bash + zsh" />
+                <Row k="weapon" v="terminal" />
+              </dl>
             </div>
 
-            <div className="bg-gray-800 rounded-lg p-6 border border-green-500/20">
-              <div className="bg-black rounded p-4 font-mono text-green-400 text-sm">
-                <div className="flex items-center mb-2">
-                  <span className="text-blue-400">ayush@system</span>
-                  <span className="text-white">:</span>
-                  <span className="text-yellow-400">~/achievements</span>
-                  <span className="text-white">$ </span>
-                  <span className="animate-pulse">|</span>
-                </div>
-                <div className="space-y-1 text-xs">
-                  <div>• Built custom Linux OS from scratch</div>
-                  <div>• Persistent UEFI/BIOS multi-boot system</div>
-                  <div>• Advanced DNS management & security tools</div>
-                  <div>• Ethical penetration testing research</div>
-                  <div>• Database-driven invoice management system</div>
-                  <div>• Self-taught with zero formal guidance</div>
-                </div>
-              </div>
-              
-              <div className="mt-6 text-center">
-                <div className="text-2xl font-bold text-white mb-2">From Zero Resources to Top Performance</div>
-                <div className="text-green-400 font-mono text-sm">No privilege. No mentors. No shortcuts.</div>
-                <div className="text-green-400 font-mono text-sm">Just curiosity, persistence, and terminal mastery.</div>
-              </div>
+            <div className="panel panel-glow-green p-5 scanline">
+              <div className="font-mono text-xs text-accent mb-2">// MOTTO</div>
+              <p className="font-display text-lg text-foreground leading-snug">
+                "While others consume content,<br />
+                <span className="text-accent text-glow-green">I create systems.</span>"
+              </p>
             </div>
-          </div>
+          </aside>
         </div>
       </div>
     </section>
   );
 };
+
+const Row = ({ k, v, highlight }: { k: string; v: string; highlight?: boolean }) => (
+  <div className="flex justify-between gap-4 border-b border-border/60 pb-2">
+    <dt className="text-muted-foreground">{k}</dt>
+    <dd className={highlight ? 'text-accent text-glow-green' : 'text-foreground'}>{v}</dd>
+  </div>
+);
 
 export default About;
