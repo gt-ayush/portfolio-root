@@ -1,187 +1,126 @@
-
 import React from 'react';
-import { ExternalLink, Github, Terminal, Shield, Database, Globe } from 'lucide-react';
+import { ExternalLink, Github, Shield, Terminal, FileSpreadsheet } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
+
+const projects = [
+  {
+    id: '01',
+    name: 'QUANTUM-SENTINEL',
+    tagline: 'PQC scanning engine — Go.',
+    description:
+      'Network reconnaissance tool that audits TLS endpoints for post-quantum readiness. Identifies vulnerable handshakes and surfaces migration paths to PQC algorithms (Kyber, Dilithium).',
+    tech: ['Go', 'PQC', 'TLS', 'Crypto'],
+    icon: Shield,
+    accent: 'accent' as const,
+    status: 'ACTIVE',
+    repo: 'https://github.com/gt-ayush',
+  },
+  {
+    id: '02',
+    name: 'SHADOW-OS',
+    tagline: 'Non-persistent Linux environment.',
+    description:
+      'Custom live-OS built with debootstrap + KDE Plasma. Boots from USB on UEFI/BIOS. RAM-only mode leaves zero forensic footprint — ideal for ops, recon, and clean rooms.',
+    tech: ['Linux', 'Debootstrap', 'KDE', 'UEFI'],
+    icon: Terminal,
+    accent: 'primary' as const,
+    status: 'PROD',
+    repo: 'https://github.com/gt-ayush',
+  },
+  {
+    id: '03',
+    name: 'RESOURCEFUL LOGIC',
+    tagline: 'Python billing — Excel-as-a-DB.',
+    description:
+      'A pragmatic billing system from when SQLite wasn\'t an option. Treats Excel sheets as a typed datastore via openpyxl. Full CRUD, invoice generation, and reporting — built under constraints.',
+    tech: ['Python', 'openpyxl', 'CLI', 'CRUD'],
+    icon: FileSpreadsheet,
+    accent: 'accent' as const,
+    status: 'COMPLETE',
+    repo: 'https://github.com/gt-ayush',
+  },
+];
 
 const Projects = () => {
-  const projects = [
-    {
-      title: 'Custom Linux OS',
-      description: 'Built from scratch using debootstrap, chroot, and KDE Plasma. Persistent bootable on UEFI/BIOS from USB/SD/external HDD. AppImage support included.',
-      icon: Terminal,
-      tech: ['Linux', 'KDE Plasma', 'UEFI', 'BIOS'],
-      status: 'Production',
-      github: '#',
-      demo: '#',
-      highlight: true
-    },
-    {
-      title: 'DNS Resolver Tool',
-      description: 'Terminal-based DNS management and resolution tool. Custom-built for network analysis and ethical hacking research.',
-      icon: Globe,
-      tech: ['Python', 'DNS', 'Networking', 'Terminal'],
-      status: 'Active',
-      github: '#',
-      demo: '#'
-    },
-    {
-      title: 'Invoice Manager',
-      description: 'Terminal-based Python application for managing client billing and invoices. Built as Class 12 project with full CRUD functionality.',
-      icon: Database,
-      tech: ['Python', 'SQLite', 'Terminal UI', 'CRUD'],
-      status: 'Complete',
-      github: '#'
-    },
-    {
-      title: 'Ethical Hacking Toolkit',
-      description: 'Collection of reconnaissance tools and security testing scripts built using Bash and Python for educational purposes.',
-      icon: Shield,
-      tech: ['Bash', 'Python', 'Security', 'Recon'],
-      status: 'Development',
-      github: '#'
-    },
-    {
-      title: 'WordPress eCommerce',
-      description: 'Fully functional medication store built in Class 10 using WordPress and custom plugins. Complete with payment integration.',
-      icon: Globe,
-      tech: ['WordPress', 'PHP', 'MySQL', 'eCommerce'],
-      status: 'Live',
-      github: '#',
-      demo: '#'
-    },
-    {
-      title: 'Secure Messaging App',
-      description: 'End-to-end encrypted messaging application with custom protocol implementation. Focus on privacy and security.',
-      icon: Shield,
-      tech: ['Python', 'Cryptography', 'Networking', 'Security'],
-      status: 'Planning',
-      future: true
-    }
-  ];
-
-  const getStatusColor = (status: string) => {
-    switch (status) {
-      case 'Production': case 'Live': return 'bg-green-500';
-      case 'Active': case 'Development': return 'bg-blue-500';
-      case 'Complete': return 'bg-yellow-500';
-      case 'Planning': return 'bg-purple-500';
-      default: return 'bg-gray-500';
-    }
-  };
-
   return (
-    <section id="projects" className="py-20 bg-gray-950 relative">
+    <section id="projects" className="py-24 relative">
       <div className="container mx-auto px-6">
-        <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 text-white font-mono">
-          <span className="text-green-400">$</span> ls -la projects/
-        </h2>
+        <header className="mb-12 max-w-3xl">
+          <div className="text-accent font-mono text-sm mb-2">// 04 — THE_LAB</div>
+          <h2 className="font-display text-4xl md:text-6xl font-bold text-foreground">
+            ACTIVE <span className="text-primary text-glow-blue">EXPERIMENTS</span>
+          </h2>
+          <p className="text-muted-foreground mt-4 font-mono text-sm">
+            $ ls -la ~/lab/ &nbsp;
+            <span className="text-accent">— three builds currently in rotation</span>
+          </p>
+        </header>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-          {projects.map((project, index) => {
-            const IconComponent = project.icon;
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {projects.map((p) => {
+            const Icon = p.icon;
+            const isAccent = p.accent === 'accent';
             return (
-              <Card 
-                key={project.title}
-                className={`bg-gray-900 border-2 transition-all duration-300 hover:scale-105 hover:shadow-xl ${
-                  project.highlight 
-                    ? 'border-green-500/50 hover:border-green-400' 
-                    : project.future
-                    ? 'border-purple-500/50 hover:border-purple-400'
-                    : 'border-gray-700 hover:border-blue-400'
+              <article
+                key={p.id}
+                className={`panel corner-brackets p-6 flex flex-col group transition-all hover:translate-y-[-4px] ${
+                  isAccent ? 'hover:panel-glow-green' : 'hover:panel-glow-blue'
                 }`}
               >
-                <CardHeader>
-                  <div className="flex items-center justify-between mb-2">
-                    <IconComponent className={`w-8 h-8 ${
-                      project.highlight ? 'text-green-400' : 
-                      project.future ? 'text-purple-400' : 'text-blue-400'
-                    }`} />
-                    <Badge className={`${getStatusColor(project.status)} text-white font-mono text-xs`}>
-                      {project.status}
-                    </Badge>
+                <div className="flex items-start justify-between mb-4">
+                  <div className={`w-12 h-12 border-2 ${isAccent ? 'border-accent text-accent' : 'border-primary text-primary'} flex items-center justify-center`}>
+                    <Icon className="w-6 h-6" />
                   </div>
-                  <CardTitle className="text-white text-xl font-mono">
-                    {project.title}
-                  </CardTitle>
-                  <CardDescription className="text-gray-300 text-sm leading-relaxed">
-                    {project.description}
-                  </CardDescription>
-                </CardHeader>
-                
-                <CardContent>
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {project.tech.map((tech) => (
-                      <Badge 
-                        key={tech}
-                        variant="outline" 
-                        className="text-xs font-mono border-gray-600 text-gray-300"
-                      >
-                        {tech}
-                      </Badge>
-                    ))}
+                  <div className="text-right font-mono text-[10px]">
+                    <div className="text-muted-foreground">PID:{p.id}</div>
+                    <div className={isAccent ? 'text-accent' : 'text-primary'}>
+                      [{p.status}]
+                    </div>
                   </div>
-                  
-                  {!project.future && (
-                    <div className="flex gap-2">
-                      {project.github && (
-                        <Button 
-                          size="sm" 
-                          variant="outline"
-                          className="border-green-500 text-green-400 hover:bg-green-500 hover:text-black flex-1"
-                        >
-                          <Github className="w-4 h-4 mr-1" />
-                          Code
-                        </Button>
-                      )}
-                      {project.demo && (
-                        <Button 
-                          size="sm"
-                          className="bg-blue-500 hover:bg-blue-600 text-white flex-1"
-                        >
-                          <ExternalLink className="w-4 h-4 mr-1" />
-                          Demo
-                        </Button>
-                      )}
-                    </div>
-                  )}
-                  
-                  {project.future && (
-                    <div className="text-center text-purple-400 font-mono text-sm">
-                      Coming Soon...
-                    </div>
-                  )}
-                </CardContent>
-              </Card>
+                </div>
+
+                <h3 className="font-display text-2xl text-foreground mb-1 tracking-wide">
+                  {p.name}
+                </h3>
+                <div className={`font-mono text-xs mb-4 ${isAccent ? 'text-accent' : 'text-primary'}`}>
+                  {p.tagline}
+                </div>
+
+                <p className="text-muted-foreground font-mono text-sm leading-relaxed flex-1 mb-5">
+                  {p.description}
+                </p>
+
+                <div className="flex flex-wrap gap-1.5 mb-5">
+                  {p.tech.map((t) => (
+                    <span key={t} className="border border-border px-2 py-0.5 text-[10px] font-mono text-muted-foreground">
+                      {t}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="flex gap-2 pt-4 border-t border-border">
+                  <Button
+                    asChild
+                    variant="outline"
+                    className="rounded-none border-border hover:border-accent hover:text-accent font-mono text-xs flex-1"
+                  >
+                    <a href={p.repo} target="_blank" rel="noreferrer">
+                      <Github className="w-3.5 h-3.5 mr-2" /> SOURCE
+                    </a>
+                  </Button>
+                  <Button
+                    asChild
+                    variant="outline"
+                    className="rounded-none border-border hover:border-primary hover:text-primary font-mono text-xs flex-1"
+                  >
+                    <a href={p.repo} target="_blank" rel="noreferrer">
+                      <ExternalLink className="w-3.5 h-3.5 mr-2" /> SPEC
+                    </a>
+                  </Button>
+                </div>
+              </article>
             );
           })}
-        </div>
-
-        {/* Future Projects Preview */}
-        <div className="mt-16 max-w-4xl mx-auto">
-          <h3 className="text-2xl font-bold text-center mb-8 text-purple-400 font-mono">
-            Future Builds
-          </h3>
-          <div className="bg-gray-900 rounded-lg border-2 border-purple-500/30 p-6">
-            <div className="text-purple-400 font-mono text-sm mb-4">
-              <span>// Upcoming projects in development</span>
-            </div>
-            <div className="space-y-2 text-gray-300">
-              <div className="flex items-center space-x-3">
-                <span className="text-purple-400">•</span>
-                <span>Parallel Encrypted Web Browser (Surface + Tor + Alt-Web)</span>
-              </div>
-              <div className="flex items-center space-x-3">
-                <span className="text-purple-400">•</span>
-                <span>Advanced Penetration Testing Framework</span>
-              </div>
-              <div className="flex items-center space-x-3">
-                <span className="text-purple-400">•</span>
-                <span>Distributed Computing Platform</span>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </section>

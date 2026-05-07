@@ -1,179 +1,159 @@
-
 import React, { useState } from 'react';
-import { Github, Linkedin, Mail, Send, Terminal } from 'lucide-react';
+import { Github, Linkedin, Mail, Send } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
-  });
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    // Handle form submission here
+    const subject = encodeURIComponent(`[portfolio] Message from ${formData.name}`);
+    const body = encodeURIComponent(`${formData.message}\n\n— ${formData.name} <${formData.email}>`);
+    window.location.href = `mailto:guptaayush12347@gmail.com?subject=${subject}&body=${body}`;
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   return (
-    <section id="contact" className="py-20 bg-gray-900 relative">
+    <section id="contact" className="py-24 relative">
       <div className="container mx-auto px-6">
-        <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 text-white font-mono">
-          <span className="text-green-400">$</span> ./connect.sh
-        </h2>
+        <header className="mb-12 max-w-3xl">
+          <div className="text-accent font-mono text-sm mb-2">// 05 — UPLINK</div>
+          <h2 className="font-display text-4xl md:text-6xl font-bold text-foreground">
+            OPEN A <span className="text-accent text-glow-green">CHANNEL</span>
+          </h2>
+          <p className="text-muted-foreground mt-4 font-mono text-sm">
+            $ nc -lvp 22 &nbsp;<span className="text-accent">— listening for inbound connections</span>
+          </p>
+        </header>
 
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12">
-          {/* Contact Info */}
-          <div className="space-y-8">
-            <div>
-              <h3 className="text-2xl font-bold text-white mb-6 font-mono">
-                Let's Build Something
-              </h3>
-              <p className="text-gray-300 text-lg leading-relaxed mb-6">
-                Looking for a developer who doesn't just code, but creates? 
-                Someone who learned Python in 6 days and built an OS without guidance? 
-                Let's connect.
-              </p>
-            </div>
+        <div className="grid lg:grid-cols-2 gap-6">
+          {/* Channels */}
+          <div className="space-y-4">
+            <a
+              href="https://github.com/gt-ayush"
+              target="_blank" rel="noreferrer"
+              className="panel p-5 flex items-center gap-4 group hover:panel-glow-green transition-all"
+            >
+              <div className="w-12 h-12 border-2 border-accent text-accent flex items-center justify-center group-hover:scale-105 transition-transform">
+                <Github className="w-6 h-6" />
+              </div>
+              <div className="flex-1 font-mono">
+                <div className="text-[10px] text-muted-foreground">CH:01 / SOURCE</div>
+                <div className="text-foreground">github.com/gt-ayush</div>
+              </div>
+              <span className="text-accent">→</span>
+            </a>
 
-            {/* Social Links */}
-            <div className="space-y-4">
-              <a 
-                href="https://github.com/gt-ayush" 
-                className="flex items-center space-x-4 p-4 bg-gray-800 rounded-lg border border-gray-700 hover:border-green-500 transition-all duration-300 group"
-              >
-                <Github className="w-6 h-6 text-green-400 group-hover:scale-110 transition-transform" />
-                <div>
-                  <div className="text-white font-mono">GitHub</div>
-                  <div className="text-gray-400 text-sm">github.com/gt-ayush</div>
-                </div>
-              </a>
+            <a
+              href="https://www.linkedin.com/in/ayush-root/"
+              target="_blank" rel="noreferrer"
+              className="panel p-5 flex items-center gap-4 group hover:panel-glow-blue transition-all"
+            >
+              <div className="w-12 h-12 border-2 border-primary text-primary flex items-center justify-center group-hover:scale-105 transition-transform">
+                <Linkedin className="w-6 h-6" />
+              </div>
+              <div className="flex-1 font-mono">
+                <div className="text-[10px] text-muted-foreground">CH:02 / NETWORK</div>
+                <div className="text-foreground">linkedin.com/in/ayush-root</div>
+              </div>
+              <span className="text-primary">→</span>
+            </a>
 
-              <a 
-                href="https://www.linkedin.com/in/ayush-root/" 
-                className="flex items-center space-x-4 p-4 bg-gray-800 rounded-lg border border-gray-700 hover:border-blue-500 transition-all duration-300 group"
-              >
-                <Linkedin className="w-6 h-6 text-blue-400 group-hover:scale-110 transition-transform" />
-                <div>
-                  <div className="text-white font-mono">LinkedIn</div>
-                  <div className="text-gray-400 text-sm">Professional Network</div>
-                </div>
-              </a>
+            <a
+              href="mailto:guptaayush12347@gmail.com"
+              className="panel p-5 flex items-center gap-4 group hover:panel-glow-green transition-all"
+            >
+              <div className="w-12 h-12 border-2 border-accent text-accent flex items-center justify-center group-hover:scale-105 transition-transform">
+                <Mail className="w-6 h-6" />
+              </div>
+              <div className="flex-1 font-mono">
+                <div className="text-[10px] text-muted-foreground">CH:03 / PRIMARY</div>
+                <div className="text-foreground break-all">guptaayush12347@gmail.com</div>
+              </div>
+              <span className="text-accent">→</span>
+            </a>
 
-              <a 
-                href="mailto:guptaayush12347@gmail.com" 
-                className="flex items-center space-x-4 p-4 bg-gray-800 rounded-lg border border-gray-700 hover:border-yellow-500 transition-all duration-300 group"
-              >
-                <Mail className="w-6 h-6 text-yellow-400 group-hover:scale-110 transition-transform" />
-                <div>
-                  <div className="text-white font-mono">Primary Email</div>
-                  <div className="text-gray-400 text-sm">guptaayush12347@gmail.com</div>
-                </div>
-              </a>
+            <a
+              href="mailto:Gt-ayush@outlook.com"
+              className="panel p-5 flex items-center gap-4 group hover:panel-glow-blue transition-all"
+            >
+              <div className="w-12 h-12 border-2 border-primary text-primary flex items-center justify-center group-hover:scale-105 transition-transform">
+                <Mail className="w-6 h-6" />
+              </div>
+              <div className="flex-1 font-mono">
+                <div className="text-[10px] text-muted-foreground">CH:04 / SECONDARY</div>
+                <div className="text-foreground break-all">Gt-ayush@outlook.com</div>
+              </div>
+              <span className="text-primary">→</span>
+            </a>
 
-              <a 
-                href="mailto:Gt-ayush@outlook.com" 
-                className="flex items-center space-x-4 p-4 bg-gray-800 rounded-lg border border-gray-700 hover:border-yellow-500 transition-all duration-300 group"
-              >
-                <Mail className="w-6 h-6 text-yellow-400 group-hover:scale-110 transition-transform" />
-                <div>
-                  <div className="text-white font-mono">Secondary Email</div>
-                  <div className="text-gray-400 text-sm">Gt-ayush@outlook.com</div>
+            <div className="panel p-5">
+              <div className="font-mono text-xs text-muted-foreground border-b border-border pb-2 mb-3">
+                ./status --availability
+              </div>
+              <div className="font-mono text-sm space-y-2">
+                <div className="flex items-center gap-2 text-accent">
+                  <span className="w-2 h-2 bg-accent led-pulse" /> Status: Open to work
                 </div>
-              </a>
-            </div>
-
-            {/* Terminal Status */}
-            <div className="bg-black rounded-lg p-4 border border-green-500/20">
-              <div className="text-green-400 font-mono text-sm">
-                <div className="flex items-center mb-2">
-                  <Terminal className="w-4 h-4 mr-2" />
-                  <span>Status: Available for opportunities</span>
-                </div>
-                <div className="text-xs text-gray-400 space-y-1">
-                  <div>• Open to work</div>
-                  <div>• Interested in ethical hacking roles</div>
-                  <div>• Available for startup collaborations</div>
-                  <div>• Open source contributions welcome</div>
-                </div>
+                <div className="text-muted-foreground">• Security & systems engineering roles</div>
+                <div className="text-muted-foreground">• Startup collaborations</div>
+                <div className="text-muted-foreground">• Open source contributions welcome</div>
               </div>
             </div>
           </div>
 
-          {/* Contact Form */}
-          <Card className="bg-gray-800 border-2 border-blue-500/30">
-            <CardHeader>
-              <CardTitle className="text-white font-mono text-xl">
-                Send Message
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div>
-                  <label className="block text-sm font-mono text-gray-300 mb-2">
-                    Name
-                  </label>
-                  <Input
-                    type="text"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    className="bg-gray-900 border-gray-600 text-white font-mono focus:border-blue-500"
-                    placeholder="Your name"
-                    required
-                  />
-                </div>
+          {/* Form */}
+          <form onSubmit={handleSubmit} className="panel corner-brackets p-6 md:p-8 space-y-5">
+            <div className="font-mono text-xs text-muted-foreground border-b border-border pb-2">
+              transmit.sh — compose payload
+            </div>
 
-                <div>
-                  <label className="block text-sm font-mono text-gray-300 mb-2">
-                    Email
-                  </label>
-                  <Input
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    className="bg-gray-900 border-gray-600 text-white font-mono focus:border-blue-500"
-                    placeholder="your.email@example.com"
-                    required
-                  />
-                </div>
+            <div>
+              <label className="block text-[10px] font-mono text-muted-foreground mb-1.5">
+                &gt; HANDLE
+              </label>
+              <Input
+                type="text" name="name" value={formData.name} onChange={handleChange}
+                className="rounded-none bg-background border-border focus-visible:border-accent focus-visible:ring-0 font-mono"
+                placeholder="your_name" required
+              />
+            </div>
 
-                <div>
-                  <label className="block text-sm font-mono text-gray-300 mb-2">
-                    Message
-                  </label>
-                  <Textarea
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    className="bg-gray-900 border-gray-600 text-white font-mono focus:border-blue-500 min-h-[120px]"
-                    placeholder="Let's discuss your project..."
-                    required
-                  />
-                </div>
+            <div>
+              <label className="block text-[10px] font-mono text-muted-foreground mb-1.5">
+                &gt; RETURN_ADDR
+              </label>
+              <Input
+                type="email" name="email" value={formData.email} onChange={handleChange}
+                className="rounded-none bg-background border-border focus-visible:border-accent focus-visible:ring-0 font-mono"
+                placeholder="you@domain.tld" required
+              />
+            </div>
 
-                <Button 
-                  type="submit"
-                  className="w-full bg-blue-500 hover:bg-blue-600 text-white font-mono font-bold py-3"
-                >
-                  <Send className="w-4 h-4 mr-2" />
-                  Send Message
-                </Button>
-              </form>
-            </CardContent>
-          </Card>
+            <div>
+              <label className="block text-[10px] font-mono text-muted-foreground mb-1.5">
+                &gt; PAYLOAD
+              </label>
+              <Textarea
+                name="message" value={formData.message} onChange={handleChange}
+                className="rounded-none bg-background border-border focus-visible:border-accent focus-visible:ring-0 font-mono min-h-[140px]"
+                placeholder="Describe the project, role, or system..." required
+              />
+            </div>
+
+            <Button
+              type="submit"
+              className="w-full rounded-none border-2 border-accent bg-accent text-accent-foreground hover:bg-accent/90 hover:shadow-[0_0_24px_hsl(var(--accent)/0.6)] font-mono font-bold py-6 tracking-wider"
+            >
+              <Send className="w-4 h-4 mr-2" />
+              TRANSMIT
+            </Button>
+          </form>
         </div>
       </div>
     </section>

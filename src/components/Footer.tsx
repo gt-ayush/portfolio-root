@@ -1,62 +1,42 @@
-
 import React from 'react';
-import { Terminal, Heart } from 'lucide-react';
+import { Github, Linkedin, Terminal } from 'lucide-react';
 
 const Footer = () => {
   return (
-    <footer className="bg-black py-12 border-t border-gray-800">
-      <div className="container mx-auto px-6">
-        <div className="text-center">
-          {/* Terminal Style Footer */}
-          <div className="bg-gray-900 rounded-lg p-6 max-w-2xl mx-auto border border-green-500/20 mb-8">
-            <div className="text-green-400 font-mono text-sm">
-              <div className="flex items-center justify-center mb-2">
-                <Terminal className="w-4 h-4 mr-2" />
-                <span>ayush@portfolio:~$ exit</span>
-              </div>
-              <div className="text-xs text-gray-400">
-                Session terminated. Thanks for visiting!
-              </div>
+    <footer className="border-t border-border bg-surface/60 backdrop-blur">
+      <div className="container mx-auto px-6 py-8">
+        <div className="grid md:grid-cols-3 gap-6 items-center">
+          <div className="font-mono text-xs text-muted-foreground">
+            <div className="flex items-center gap-2 text-accent mb-1">
+              <Terminal className="w-3.5 h-3.5" /> ayush@portfolio:~$ exit
+            </div>
+            <div>Session terminated. Connection closed by remote host.</div>
+          </div>
+
+          <div className="text-center font-mono text-xs">
+            <div className="text-foreground">© 2026 AYUSH KUMAR GUPTA</div>
+            <div className="text-muted-foreground mt-1">
+              Built in terminal. Powered by chaos.
             </div>
           </div>
 
-          {/* Copyright */}
-          <div className="text-gray-400 font-mono text-sm mb-4">
-            © 2025 Ayush Kumar Gupta — Made in Terminal
-          </div>
-
-          {/* Quote */}
-          <div className="text-green-400 font-mono text-xs max-w-md mx-auto mb-6">
-            "While others consume content, I create systems."
-          </div>
-
-          {/* Links */}
-          <div className="flex justify-center space-x-6 text-sm">
-            <a 
-              href="#" 
-              className="text-gray-400 hover:text-green-400 transition-colors font-mono"
+          <div className="flex md:justify-end gap-3">
+            <a
+              href="https://github.com/gt-ayush"
+              target="_blank" rel="noreferrer"
+              className="w-10 h-10 border border-border hover:border-accent hover:text-accent flex items-center justify-center transition-colors"
+              aria-label="GitHub"
             >
-              Resume
+              <Github className="w-4 h-4" />
             </a>
-            <a 
-              href="#" 
-              className="text-gray-400 hover:text-blue-400 transition-colors font-mono"
+            <a
+              href="https://www.linkedin.com/in/ayush-root/"
+              target="_blank" rel="noreferrer"
+              className="w-10 h-10 border border-border hover:border-primary hover:text-primary flex items-center justify-center transition-colors"
+              aria-label="LinkedIn"
             >
-              Open Source
+              <Linkedin className="w-4 h-4" />
             </a>
-            <a 
-              href="#" 
-              className="text-gray-400 hover:text-yellow-400 transition-colors font-mono"
-            >
-              Blog
-            </a>
-          </div>
-
-          {/* Made with love indicator */}
-          <div className="flex items-center justify-center mt-6 text-gray-500 text-xs">
-            <span className="mr-2">Built with</span>
-            <Heart className="w-3 h-3 text-red-500 fill-current" />
-            <span className="ml-2">and lots of coffee</span>
           </div>
         </div>
       </div>
