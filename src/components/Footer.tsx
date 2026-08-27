@@ -1,5 +1,13 @@
 import React from 'react';
-import { Github, Linkedin, Terminal } from 'lucide-react';
+import { Github, Linkedin, Terminal, Code, BarChart3 } from 'lucide-react';
+import { personal } from '@/data/profile';
+
+const links = [
+  { href: personal.socials.github, label: 'GitHub', Icon: Github, tone: 'accent' },
+  { href: personal.socials.linkedin, label: 'LinkedIn', Icon: Linkedin, tone: 'primary' },
+  { href: personal.socials.leetcode, label: 'LeetCode', Icon: Code, tone: 'accent' },
+  { href: personal.socials.kaggle, label: 'Kaggle', Icon: BarChart3, tone: 'primary' },
+];
 
 const Footer = () => {
   return (
@@ -14,29 +22,29 @@ const Footer = () => {
           </div>
 
           <div className="text-center font-mono text-xs">
-            <div className="text-foreground">© 2026 AYUSH KUMAR GUPTA</div>
+            <div className="text-foreground">© 2026 {personal.name.toUpperCase()}</div>
             <div className="text-muted-foreground mt-1">
-              Built in terminal. Powered by chaos.
+              {personal.location} · Built in terminal.
             </div>
           </div>
 
           <div className="flex md:justify-end gap-3">
-            <a
-              href="https://github.com/gt-ayush"
-              target="_blank" rel="noreferrer"
-              className="w-10 h-10 border border-border hover:border-accent hover:text-accent flex items-center justify-center transition-colors"
-              aria-label="GitHub"
-            >
-              <Github className="w-4 h-4" />
-            </a>
-            <a
-              href="https://www.linkedin.com/in/ayush-root/"
-              target="_blank" rel="noreferrer"
-              className="w-10 h-10 border border-border hover:border-primary hover:text-primary flex items-center justify-center transition-colors"
-              aria-label="LinkedIn"
-            >
-              <Linkedin className="w-4 h-4" />
-            </a>
+            {links.map(({ href, label, Icon, tone }) => (
+              <a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={label}
+                className={`w-10 h-10 border border-border flex items-center justify-center transition-colors ${
+                  tone === 'accent'
+                    ? 'hover:border-accent hover:text-accent'
+                    : 'hover:border-primary hover:text-primary'
+                }`}
+              >
+                <Icon className="w-4 h-4" />
+              </a>
+            ))}
           </div>
         </div>
       </div>

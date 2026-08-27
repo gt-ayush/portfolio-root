@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Github, Linkedin, Mail, Send } from 'lucide-react';
+import { BarChart3, Code, Github, Linkedin, Mail, Send } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -22,7 +22,7 @@ const Contact = () => {
     <section id="contact" className="py-24 relative">
       <div className="container mx-auto px-6">
         <header className="mb-12 max-w-3xl">
-          <div className="text-accent font-mono text-sm mb-2">// 05 — UPLINK</div>
+          <div className="text-accent font-mono text-sm mb-2">// 06 — UPLINK</div>
           <h2 className="font-display text-4xl md:text-6xl font-bold text-foreground">
             OPEN A <span className="text-accent text-glow-green">CHANNEL</span>
           </h2>
@@ -50,7 +50,7 @@ const Contact = () => {
             </a>
 
             <a
-              href="https://www.linkedin.com/in/ayush-root/"
+              href="https://www.linkedin.com/in/ayush-kumar-gupta-root"
               target="_blank" rel="noreferrer"
               className="panel p-5 flex items-center gap-4 group hover:panel-glow-blue transition-all"
             >
@@ -59,10 +59,35 @@ const Contact = () => {
               </div>
               <div className="flex-1 font-mono">
                 <div className="text-[10px] text-muted-foreground">CH:02 / NETWORK</div>
-                <div className="text-foreground">linkedin.com/in/ayush-root</div>
+                <div className="text-foreground break-all">linkedin.com/in/ayush-kumar-gupta-root</div>
               </div>
               <span className="text-primary">→</span>
             </a>
+
+            <div className="grid grid-cols-2 gap-4">
+              <a
+                href="https://leetcode.com/u/Fpn18p5UsM/"
+                target="_blank" rel="noreferrer"
+                className="panel p-5 flex items-center gap-3 group hover:panel-glow-green transition-all"
+              >
+                <Code className="w-5 h-5 text-accent" />
+                <div className="font-mono">
+                  <div className="text-[10px] text-muted-foreground">CH:05</div>
+                  <div className="text-foreground text-sm">LeetCode</div>
+                </div>
+              </a>
+              <a
+                href="https://www.kaggle.com/gt0ayush"
+                target="_blank" rel="noreferrer"
+                className="panel p-5 flex items-center gap-3 group hover:panel-glow-blue transition-all"
+              >
+                <BarChart3 className="w-5 h-5 text-primary" />
+                <div className="font-mono">
+                  <div className="text-[10px] text-muted-foreground">CH:06</div>
+                  <div className="text-foreground text-sm">Kaggle</div>
+                </div>
+              </a>
+            </div>
 
             <a
               href="mailto:guptaayush12347@gmail.com"

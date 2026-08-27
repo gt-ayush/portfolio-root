@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Activity, ChevronDown, Cpu, HardDrive, Network, Power, Terminal } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { personal } from '@/data/profile';
 
 const Hero = () => {
   const [text, setText] = useState('');
@@ -70,15 +71,16 @@ const Hero = () => {
               <span className="text-accent cursor-blink ml-2">_</span>
             </h1>
 
-            <div className="text-accent font-mono text-lg md:text-xl mb-6 min-h-[2rem]">
+            <div className="text-accent font-mono text-lg md:text-xl mb-3 min-h-[2rem]">
               {text}
             </div>
 
+            <div className="font-mono text-xs md:text-sm text-primary mb-6">
+              {personal.headline} &nbsp;<span className="text-muted-foreground">· {personal.location}</span>
+            </div>
+
             <p className="text-muted-foreground text-base md:text-lg max-w-xl mb-8 leading-relaxed">
-              Self-taught systems engineer & security researcher.
-              <span className="text-foreground"> Chaos Learner.</span>{' '}
-              <span className="text-foreground">High-execution builder.</span> From bricking
-              an OS in 4th grade to mastering C in 12 hours.
+              {personal.intro}
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3">
