@@ -1,8 +1,8 @@
 import React from 'react';
-import { Cloud, Code2, Cpu, Database, Network, ShieldCheck } from 'lucide-react';
+import { Brain, Cloud, Database, Globe, Monitor, Network, Server, ShieldCheck, Terminal, Wrench } from 'lucide-react';
 import { skillGroups } from '@/data/profile';
 
-const icons = [Code2, Cpu, Network, ShieldCheck, Cloud, Database];
+const icons = [Terminal, Monitor, Server, Network, ShieldCheck, Cloud, Wrench, Database, Globe, Brain];
 
 const Skills = () => {
   const total = skillGroups.reduce((n, g) => n + g.items.length, 0);
