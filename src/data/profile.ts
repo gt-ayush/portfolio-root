@@ -16,11 +16,22 @@ export const personal = {
 export const skillGroups: { category: string; items: string[] }[] = [
   {
     category: 'Languages',
-    items: ['C / C++', 'Go', 'Python', 'Java', 'Bash / Shell Scripting'],
+    items: [
+      'C / C++',
+      'HTML5, HTMLX, CSS3',
+      'Go',
+      'Python',
+      'Java',
+      'Bash / Shell Scripting, Batch Scripting',
+    ],
   },
   {
-    category: 'OS & Systems',
-    items: ['Linux (Arch / Manjaro / KDE neon)', 'VirtualBox & UEFI Administration'],
+    category: 'OS & Environments',
+    items: ['Linux, Android, Windows'],
+  },
+  {
+    category: 'Systems',
+    items: ['VirtualBox & UEFI Administration'],
   },
   {
     category: 'Networking',
@@ -29,18 +40,30 @@ export const skillGroups: { category: string; items: string[] }[] = [
   {
     category: 'Cybersecurity',
     items: [
-      'Android Reverse Engineering (JADX, Apktool)',
+      'Android Reverse Engineering (JADX, Apktool, Gephi, Binary Analysis)',
       'Mobile Penetration Testing',
       'Post-Quantum Cryptography (PQC)',
     ],
   },
   {
     category: 'Cloud & Infrastructure',
-    items: ['AWS (Amazon Web Services)', 'Podman & VPS Management'],
+    items: ['AWS (Amazon Web Services)', 'Docker, Podman & VPS Management'],
   },
   {
-    category: 'Data, Web & Tools',
-    items: ['PostgreSQL / MySQL', 'Django', 'Git & GitHub', 'Prompt Engineering'],
+    category: 'Tools',
+    items: ['Git & GitHub'],
+  },
+  {
+    category: 'Databases',
+    items: ['PostgreSQL / MySQL / MariaDB'],
+  },
+  {
+    category: 'Web Frameworks',
+    items: ['Django'],
+  },
+  {
+    category: 'AI & Data',
+    items: ['Prompt Engineering'],
   },
 ];
 
