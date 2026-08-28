@@ -1,11 +1,45 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Activity, ChevronDown, Cpu, HardDrive, Network, Power, Terminal } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { personal } from '@/data/profile';
 
+const terminalSnippets = [
+  '[ OK ] Mounted /dev/portfolio on /mnt/ayush',
+  '[ OK ] Started ssh.service — chaos.learner@gt-ayush',
+  '[ OK ] System ready. Welcome, operator.',
+  '[INFO] Loading kernel module: shadow_os_factory.ko',
+  '[INFO] quantum_sentinel daemon started pid=4821',
+  '[INFO] DNS resolver listening on 127.0.0.1:53',
+  '[INFO] kotman orchestrator: 7 containers running',
+  '[ OK ] time_based_encryption key rotation complete',
+  '[WARN] anomaly detected in socket stream 0x7f3a',
+  '[ OK ] reverse engineering toolkit initialized',
+  '[INFO] scanning subnet 192.168.1.0/24 ...',
+  '[ OK ] handshake with post-quantum cipher suite',
+  '[INFO] android manifest parsed via apktool',
+  '[ OK ] UEFI boot entry verified',
+  '[WARN] privilege escalation vector mitigated',
+  '[INFO] shadow_web backend: django 5.1 stable',
+  '[ OK ] mesh network backend synchronized',
+  '[INFO] VPS health check: 99.9% uptime',
+  '[ OK ] docker image built in 12.4s',
+  '[INFO] threat intelligence feed updated',
+  '[ OK ] bash payload delivered to target sandbox',
+  '[INFO] pqc lattice signature verified',
+  '[WARN] brute-force attempt blocked: iptables drop',
+  '[ OK ] SSL/TLS certificate chain validated',
+  '[INFO] binary analysis: 14 functions decompiled',
+  '[ OK ] wireless adapter switched to monitor mode',
+  '[INFO] ansible playbook finished: 0 failures',
+  '[ OK ] postgresql replica in sync',
+  '[INFO] kaggle notebook kernel executed',
+  '[ OK ] leetcode daily challenge accepted',
+];
+
 const Hero = () => {
   const [text, setText] = useState('');
   const [boot, setBoot] = useState<string[]>([]);
+  const terminalRef = useRef<HTMLDivElement>(null);
   const fullText = '> Building Systems from the BIOS up.';
 
   const bootLines = [
@@ -26,13 +60,37 @@ const Hero = () => {
   }, []);
 
   useEffect(() => {
+    // Seed the initial boot sequence
     let i = 0;
-    const t = setInterval(() => {
-      if (i < bootLines.length) { setBoot((b) => [...b, bootLines[i]]); i++; }
-      else clearInterval(t);
+    const seed = setInterval(() => {
+      if (i < bootLines.length) {
+        setBoot((b) => [...b, bootLines[i]]);
+        i++;
+      } else {
+        clearInterval(seed);
+      }
     }, 350);
-    return () => clearInterval(t);
+    return () => clearInterval(seed);
   }, []);
+
+  useEffect(() => {
+    // Continuous random terminal stream
+    const stream = setInterval(() => {
+      const next = terminalSnippets[Math.floor(Math.random() * terminalSnippets.length)];
+      setBoot((b) => {
+        const updated = [...b, next];
+        return updated.length > 28 ? updated.slice(updated.length - 28) : updated;
+      });
+    }, 140);
+    return () => clearInterval(stream);
+  }, []);
+
+  useEffect(() => {
+    // Auto-scroll to latest line
+    if (terminalRef.current) {
+      terminalRef.current.scrollTop = terminalRef.current.scrollHeight;
+    }
+  }, [boot]);
 
   const scrollTo = (id: string) =>
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
